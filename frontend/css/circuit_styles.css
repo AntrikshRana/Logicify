@@ -1,0 +1,135 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    background: white;
+    font-family: sans-serif;
+}
+.controls {
+    margin: 10px 0;
+}
+.grid {
+    display: grid;
+    position: relative;
+    background: white;
+    border: 1px solid #ccc;
+}
+.grid div.grid-cell {
+    border: 1px dotted rgb(220, 220, 220);
+    box-sizing: border-box;
+    pointer-events: none; /* grid cells don't block clicks */
+}
+.box {
+    position: absolute;
+    border: 2px solid black;
+    background: rgba(86, 204, 209, 0.659);
+    cursor: grab;
+    user-select: none; /* to prevent text selection while dragging */
+}
+.box:active {
+    cursor: grabbing;
+}
+.black-box {
+    position: absolute;
+    width: 10px;
+    background-color: black;
+    border: 1px solid black;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.not-box {
+    background-color: #d36b6b;
+    border: 1px solid #a33;
+    border-radius: 5px;
+}
+.black-box.pressed {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+.lines-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+.connector-line {
+    stroke: blue;
+    stroke-width: 2;
+    fill: none;
+}
+.circuit-line {
+    stroke: #222; /* Light mode color */
+    stroke-width: 2;
+    fill: none;
+    stroke-linejoin: round; 
+    stroke-linecap: round;
+}
+
+/* NEW rule for the dot */
+.circuit-dot {
+    fill: #222; /* Light mode color */
+    r: 3;
+}
+.wire-bridge {
+    stroke-linecap: round;
+}
+.outp { 
+    margin-bottom: 20px; margin-top: 20px;
+    font-family: "Inter", sans-serif;
+    font-size: 24px;
+    color: #0284c7;
+    margin-top: 15px; 
+    font-weight: 600; 
+}
+
+/* Dark theme mode for the circuit */
+
+body.dark-mode {
+  background: #0f172a; /* Dark background */
+}
+
+
+body.dark-mode .grid {
+  background: #0f172a; /* Dark background */
+  border: 1px solid #475569; /* Lighter border */
+}
+
+body.dark-mode .grid div.grid-cell {
+  border: 1px dotted #334155; /* Lighter dotted lines */
+}
+
+/* Make logic gates stand out on dark background */
+body.dark-mode .box {
+  border: 2px solid #94a3b8; /* Lighter border for gates */
+  background: rgba(86, 204, 209, 0.75);
+}
+
+body.dark-mode .not-box {
+  background-color: #d36b6b; /* Red is fine */
+  border: 1px solid #f87171; /* Lighter red border */
+}
+
+body.dark-mode .black-box {
+  background-color: #cbd5e1; /* Light gray "black" box */
+  border: 1px solid #cbd5e1;
+}
+
+body.dark-mode .black-box.pressed {
+  background-color: #0ea5e9; /* Use the bright blue from main page */
+  border-color: #0ea5e9;
+}
+
+body.dark-mode .connector-line {
+  stroke: #0ea5e9; /* Bright blue lines */
+}
+
+body.dark-mode .circuit-line {
+    stroke: #0ea5e9; /* Dark mode color */
+}
+
+body.dark-mode .circuit-dot {
+    fill: #0ea5e9; /* Dark mode color */
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Boolean Expression Evaluator</title>
+
+<link rel="stylesheet" href="css/styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+  <header class="top-bar">
+      
+      <div class="top-bar-left">
+        <img src="./img/logo.png" alt="Logo" class="logo">
+      </div>
+      
+      <div class="top-bar-middle">
+        <h2 class="top-bar-title">Data Structres Project</h2>
+      </div>
+      
+      <div class="top-bar-right">
+        <div class="theme-toggle">
+          <input type="checkbox" id="themeSwitch" class="theme-switch-checkbox">
+          <label for="themeSwitch" class="theme-switch-label">
+            <span class="theme-switch-inner"></span>
+            <span class="theme-switch-slider"></span>
+          </label>
+        </div>
+      </div>
+
+    </header>
+<div class="container">
+  <h1><span>Boolean</span> Expression Evaluator</h1>
+
+  <div id="modeSelector">
+    <button id="btnShowExpr" class="mode-button">Evaluate Expression</button>
+    <button id="btnShowMinterm" class="mode-button">Evaluate Minterms/Maxterms</button>
+  </div>
+
+  <div id="evaluatorContainer" class="hidden">
+
+    <div id="expressionInput" class="hidden">
+      <div class="input-container">
+        <select id="expressionType" class="input-type-select">
+          <option value="1">SOP</option>
+          <option value="2">POS</option>
+        </select>
+        <textarea id="inputBoxExpr" placeholder="Enter infix boolean expression..."></textarea>
+      </div>
+    </div>
+
+    <div id="mintermInput" class="hidden">
+      <div class="minterm-header">
+        <select id="inputType">
+          <option value="3">&Sigma; Minterm</option>
+          <option value="4">&Pi; Maxterm</option>
+        </select>
+        <input type="text" id="varList" placeholder="Variables (e.g., A,B,C)">
+      </div>
+      <textarea id="termList" placeholder="Enter comma-separated terms (e.g., 0,2,4,7)..."></textarea>
+    </div>
+
+    <div class="button-row">
+      <button id="btnBack">&larr; Back</button>
+      <button id="btnEvaluate">Evaluate</button>
+    </div>
+    <button id="btnGenerateCircuit" class="hidden">Generate Circuit</button>
+
+  </div> 
+  <div id="output" class="hidden"></div>
+  
+</div>
+
+<div class="div-above"></div>
+
+<div id="circuit_diagram" class="hidden circuit_container">
+    <iframe id="circuitFrame" src="circuit.html"
+            style="width:1100px; height:1100px; border:none; margin-top:25px; display:none;">
+    </iframe>
+</div>
+
+<script src="./js/script.js"></script>
+<script src="./js/theme-toggle.js"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+TO RUN THE PROJECT LOCALLY FOLLOW THESE STEPS-
+
+Open the "backend" folder in terminal/powershell.
+
+1. Type "node -v" and enter
+    If this throws an error then that means Node is not installed...
+    First install Node then try this command again...
+    
+2. "npm -v" and enter
+    If this throws an error that means npm is not installed...
+    First install npm then try this command again... 
+    
+3. "npm install" and enter...
+
+4. "npm install express" and enter...
+
+5. "node server.js" and enter...
+
+If u get success msg: "✅ Server running at http://localhost:5000" then you are done with the server part.
+otherwise kys
+
+Then open the "index.html" file in the browser and test if its working or not.
+Now to close the sever open the terminal you opened the "backend" file and press: Ctrl+C.
+This will close the server.

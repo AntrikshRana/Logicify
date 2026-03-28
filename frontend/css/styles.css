@@ -1,0 +1,459 @@
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Inter", sans-serif; }
+body { 
+    background: linear-gradient(135deg, #f4f7fb, #e8eef5); 
+    color: #1e1e1e; 
+    min-height: 100vh; 
+    padding: 20px;
+    padding-top: 100px;
+}
+.div-above {
+        margin-bottom: 40px; /* Adds 20 pixels of space below this div */
+}
+.container { 
+    width: 100%; 
+    max-width: 720px; 
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px); border-radius: 20px; 
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08); 
+    padding: 45px 40px; 
+    animation: fadeIn 0.6s ease;
+    margin: 0 auto; 
+}
+.circuit_container {
+    width: 100%;
+    max-width: 1200px;
+    background: rgba(255, 255, 255, 0.8); 
+    backdrop-filter: blur(12px); border-radius: 20px; 
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08); 
+    padding: 45px 40px; 
+    animation: fadeIn 0.7s ease;
+    margin: 0 auto; 
+}
+h1 { 
+    text-align: center; 
+    font-size: 1.9rem; 
+    font-weight: 600; 
+    color: #1e293b; 
+    margin-bottom: 25px; 
+}
+h1 span { 
+    color: #0ea5e9; 
+}
+textarea {
+    flex-grow: 1; /* Makes it fill the remaining space */
+    height: 90px;
+    border: none; /* Remove its own border */
+    background: transparent; /* Use the container's background */
+    color: #111827;
+    font-size: 15px;
+    padding: 14px;
+    outline: none;
+    resize: none;
+    /* Remove any old width, border, border-radius, background, or transition rules */
+}
+textarea:focus {
+    border-color: transparent;
+    box-shadow: none;
+}
+button { 
+    display: block; 
+    margin: 25px auto 0 auto; 
+    padding: 12px 36px; border: none; 
+    border-radius: 10px; background: linear-gradient(90deg, #0ea5e9, #0284c7); 
+    color: #ffffff; font-weight: 600; 
+    font-size: 16px; cursor: pointer; 
+    transition: transform 0.2s ease, box-shadow 0.2s ease; 
+}
+button:hover { 
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 18px rgba(14, 165, 233, 0.25); 
+}
+#output { 
+    margin-top: 30px; 
+    background: rgba(255, 255, 255, 0.7); 
+    border-radius: 14px; padding: 20px; border: 1px solid #e5e7eb; 
+    font-family: "Courier New", monospace; max-height: 420px; 
+    overflow-y: auto; 
+    color: #1e293b; 
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.03); 
+}
+#output h3 { 
+    color: #0284c7;
+    margin-top: 15px; 
+    font-weight: 600; 
+}
+.truth-table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 10px; 
+    border-radius: 8px; 
+    overflow: hidden; 
+}
+.truth-table th, .truth-table td { 
+    border: 1px solid #e5e7eb; 
+    padding: 8px; 
+    text-align: center; 
+    font-size: 14px; 
+}
+.truth-table th { 
+    background: #f1f5f9; 
+    color: #0f172a; 
+    font-weight: 600; 
+}
+.truth-table tr:nth-child(even) { 
+    background: #f9fafb; 
+}
+.input-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid #d1d5db;
+    background: #f9fafb;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden; /* Clips children to the rounded border */
+}
+
+/* Adds the blue glow to the *whole container* on focus */
+.input-container:focus-within {
+    border-color: #0ea5e9;
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+}
+
+/* Styles the new dropdown */
+.input-type-select {
+    padding: 14px 10px;
+    border: none;
+    background: #f1f5f9; /* Light gray background */
+    font-size: 15px;
+    font-weight: 500;
+    color: #1e293b;
+    border-right: 1px solid #d1d5db; /* Separator line */
+    outline: none;
+    cursor: pointer;
+}
+/* Add this class to hide elements */
+.hidden {
+    display: none !important; /* Use !important to ensure it overrides */
+}
+
+/* Style for the first two mode buttons */
+.mode-button {
+    width: 100%;
+    padding: 18px;
+    font-size: 1.1rem;
+    margin-bottom: 15px; /* Space them out */
+}
+
+  /* New styles for the Minterm input area */
+.minterm-header {
+    display: flex;
+    gap: 10px; /* Space between dropdown and var input */
+    margin-bottom: 10px;
+}
+
+#inputType {
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    background: #f1f5f9;
+}
+
+#varList {
+    flex-grow: 1; /* Make it fill the remaining space */
+    padding: 10px 14px;
+    font-size: 15px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    background: #f9fafb;
+}
+
+  /* Make the term list textarea match the expression one */
+#termList {
+    width: 100%;
+    height: 90px;
+    border-radius: 12px;
+    border: 1px solid #d1d5db;
+    background: #f9fafb;
+    color: #111827;
+    font-size: 15px;
+    padding: 14px;
+    outline: none;
+    resize: none;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+#termList:focus, #varList:focus {
+    border-color: #0ea5e9;
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+}
+
+  /* Styles for the "Back" and "Evaluate" buttons */
+.button-row {
+    display: flex;
+    justify-content: space-between; /* Puts them on opposite ends */
+    margin-top: 25px;
+}
+
+#btnGenerateCircuit {
+    width: 100%;
+    margin-top: 15px; /* Space it from the output */
+    background: linear-gradient(90deg, #10b981, #059669); /* Green */
+}
+#btnGenerateCircuit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(16, 185, 129, 0.25);
+}
+  /* Make "Evaluate" and "Back" use the same base style */
+#btnEvaluate, #btnBack {
+    margin: 0; /* Remove auto margin */
+    padding: 12px 36px;
+    flex-basis: 48%; /* Make them roughly half-width */
+}
+
+  /* Make the "Back" button less prominent */
+#btnBack {
+    background: #94a3b8; /* A neutral gray */
+    color: #1e293b;
+}
+#btnBack:hover {
+    background: #e2e8f0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+#circuit-diagram { 
+    margin-top: 30px; text-align: center; 
+}
+svg { 
+    background: #f9fafb; 
+    border-radius: 10px; 
+    box-shadow: 0 0 8px rgba(0,0,0,0.1); 
+}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+/* === TOP BAR STYLES === */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px; /* Fixed height for the bar */
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 0 40px; /* Aligns padding with .container */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  transition: background 0.3s ease;
+}
+
+/* Flex containers for left, middle, right */
+.top-bar-left, .top-bar-middle, .top-bar-right {
+  flex: 1 0 0;
+}
+
+.top-bar-middle {
+  text-align: center;
+}
+
+.top-bar-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.logo {
+  height: 40px; /* Adjust as needed */
+  width: auto;
+}
+
+.top-bar-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+/* === THEME TOGGLE SWITCH === */
+.theme-switch-checkbox {
+  display: none;
+}
+
+.theme-switch-label {
+  display: block;
+  position: relative;
+  width: 50px;
+  height: 26px;
+  border-radius: 13px;
+  background: #b6c2d9;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.theme-switch-inner {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  content: "";
+  background: #f1f5f9;
+  border-radius: 13px;
+}
+
+/* Icons for light/dark */
+.theme-switch-slider::before,
+.theme-switch-slider::after {
+  display: block;
+  position: absolute;
+  font-size: 16px;
+  transition: opacity 0.3s ease;
+  
+  /* Center the icon inside the 20x20 slider */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Sun icon */
+.theme-switch-slider::before {
+  content: "☀️";
+  opacity: 1;
+}
+
+/* Moon icon */
+.theme-switch-slider::after {
+  content: "🌙";
+  opacity: 0;
+}
+.theme-switch-slider {
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  top: 3px;
+  left: 3px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+/* --- Toggle Checked State --- */
+.theme-switch-checkbox:checked + .theme-switch-label {
+  background: #0ea5e9;
+}
+
+.theme-switch-checkbox:checked + .theme-switch-label .theme-switch-inner {
+  background: #1e293b;
+}
+
+.theme-switch-checkbox:checked + .theme-switch-label .theme-switch-slider::before {
+  opacity: 0; /* Hide sun */
+}
+
+.theme-switch-checkbox:checked + .theme-switch-label .theme-switch-slider::after {
+  opacity: 1; /* Show moon */
+}
+
+.theme-switch-checkbox:checked + .theme-switch-label .theme-switch-slider {
+  transform: translateX(24px);
+}
+
+
+/* === DARK MODE THEME === */
+/* This class will be added to the <body> by JavaScript */
+
+body.dark-mode {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  color: #e2e8f0;
+}
+
+body.dark-mode .top-bar {
+  background: rgba(62, 89, 151, 0.8); /* Dark, slightly transparent */
+}
+
+body.dark-mode .top-bar-title {
+  color: #e2e8f0;
+}
+
+body.dark-mode .logo {
+  /* This adds a 3px white glow around the non-transparent
+     parts of your logo, making the dark text visible. */
+  filter: drop-shadow(0 0 7px white) drop-shadow(0 0 7px white);
+}
+
+body.dark-mode .container {
+  background: rgba(30, 41, 59, 0.8); /* Darker container */
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+body.dark-mode .circuit_container {
+  background: rgba(30, 41, 59, 0.8); /* Darker container */
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+body.dark-mode h1 {
+  color: #f1f5f9;
+}
+
+/* Input fields */
+body.dark-mode .input-container {
+  border-color: #475569;
+  background: #0f172a;
+}
+body.dark-mode textarea,
+body.dark-mode #varList {
+  background: transparent;
+  color: #e2e8f0;
+}
+
+.dark-mode #termList {
+  color: white;
+  background-color: #333;
+}
+
+body.dark-mode .input-type-select,
+body.dark-mode #inputType {
+  background: #1e293b;
+  color: #e2e8f0;
+  border-right-color: #475569;
+}
+
+/* Focus glow */
+body.dark-mode .input-container:focus-within,
+body.dark-mode #termList:focus, 
+body.dark-mode #varList:focus {
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.3);
+}
+
+/* Minterm term list */
+body.dark-mode #termList {
+  border-color: #475569;
+  background: #0f172a;
+}
+
+/* Output */
+body.dark-mode #output {
+  background: rgba(15, 23, 42, 0.7);
+  border-color: #475569;
+  color: #e2e8f0;
+}
+
+/* Table */
+body.dark-mode .truth-table th {
+  background: #1e293b;
+  color: #f1f5f9;
+  border-color: #475569;
+}
+
+body.dark-mode .truth-table td {
+  border-color: #475569;
+}
+
+body.dark-mode .truth-table tr:nth-child(even) {
+  background: #0f172a;
+}
