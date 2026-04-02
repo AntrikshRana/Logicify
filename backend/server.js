@@ -21,6 +21,9 @@ app.use((req, res, next) => {
   next();
 });
 
+// ===== Serve static files from frontend =====
+app.use(express.static(path.join(__dirname, "../frontend")));
+
 // ===== /evaluate endpoint (calls bool_eval.out) =====
 app.post("/evaluate", (req, res) => {
   const userInput = req.body.input || "";
